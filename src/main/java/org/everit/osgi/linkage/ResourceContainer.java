@@ -25,9 +25,26 @@ import org.osgi.resource.Resource;
 public interface ResourceContainer {
 
     /**
+     * Adding a {@link ResourceTracker} that will be notified about {@link Resource} changes in the container.
+     *
+     * @param resourceTracker
+     *            The {@link ResourceTracker} that will be registered in the container.
+     */
+    void addResourceTracker(ResourceTracker resourceTracker);
+
+    /**
      * Get all of the resources that are held by this container.
      *
      * @return an array of resources that are held by this container.
      */
     Resource[] getResources();
+
+    /**
+     * Removing a {@link ResourceTracker} from the {@link ResourceContainer}. The tracker will not be notified about any
+     * more events.
+     *
+     * @param resourceTracker
+     *            The {@link ResourceTracker} that will be removed from the container.
+     */
+    void removeResourceTracker(ResourceTracker resourceTracker);
 }

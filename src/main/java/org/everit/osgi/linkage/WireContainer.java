@@ -29,6 +29,14 @@ import org.osgi.resource.Wire;
 public interface WireContainer {
 
     /**
+     * Adding a {@link WireTracker} that will be notified about {@link Wire} changes in the container.
+     *
+     * @param wireTracker
+     *            The {@link WireTracker} that will be registered in the container.
+     */
+    void addWireTracker(WireTracker wireTracker);
+
+    /**
      * Returns all the wires this service knows about.
      *
      * @return The list of wires this service knows about.
@@ -56,5 +64,14 @@ public interface WireContainer {
      *         available.
      */
     List<Wire> getWiresByRequirement(Requirement requirement);
+
+    /**
+     * Removing a {@link WireTracker} from the {@link WireContainer}. The tracker will not be notified about any more
+     * events.
+     *
+     * @param wireTracker
+     *            The {@link WireTracker} that will be removed from the container.
+     */
+    void removeWireTracker(WireTracker wireTracker);
 
 }
