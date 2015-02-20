@@ -30,7 +30,8 @@ public interface ServiceCapability extends Capability {
     String SERVICE_CAPABILITY_NAMESPACE = "osgi.service";
 
     /**
-     * Two {@link ServiceCapability}s are the same if they hold the same {@link ServiceReference} instance.
+     * Two {@link ServiceCapability}s are the same if they hold the same {@link ServiceReference} instance and
+     * {@link Capability#getResource()} function returns the same resource.
      */
     @Override
     boolean equals(Object obj);
@@ -43,7 +44,8 @@ public interface ServiceCapability extends Capability {
     ServiceReference<?> getServiceReference();
 
     /**
-     * Two {@link ServiceCapability}s have the same hashcode if they hold the same {@link ServiceReference} instance.
+     * Two {@link ServiceCapability}s have the same hashcode if they hold the same {@link ServiceReference} instance and
+     * {@link Capability#getResource()} function returns the same resource.
      */
     @Override
     int hashCode();
