@@ -16,7 +16,10 @@
  */
 package org.everit.osgi.linkage;
 
+import java.util.Map;
+
 import org.osgi.framework.ServiceReference;
+import org.osgi.framework.wiring.BundleRevision;
 import org.osgi.resource.Capability;
 
 /**
@@ -35,6 +38,30 @@ public interface ServiceCapability extends Capability {
      */
     @Override
     boolean equals(Object obj);
+
+    /**
+     * Returns the service properties.
+     */
+    @Override
+    Map<String, Object> getAttributes();
+
+    /**
+     * Always returns an immutable empty {@link Map}.
+     */
+    @Override
+    Map<String, String> getDirectives();
+
+    /**
+     * Always returns {@value #SERVICE_CAPABILITY_NAMESPACE}.
+     */
+    @Override
+    String getNamespace();
+
+    /**
+     * Returns the {@link BundleRevision} that was used to register the OSGi service.
+     */
+    @Override
+    BundleRevision getResource();
 
     /**
      * Returns the {@link ServiceReference} that is held by this {@link Capability}.
